@@ -1,19 +1,36 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import InputSearch from '../src/InputSearch'
-
+import InputSearch from './InputSearch';
+import SecondPage from './SecondPage'
+import {getData} from './Api';
 
 function App() {
+  const [querySearch, setQuerySearch] = useState("");
+  const [photos, setPhotos] = useState([]);
+  const [isShowResult, setIsShowResult] = useState(false); 
+ 
+ useEffect(() => {
+  if (querySearch) {
+    getData(querySearch).then((result) => {
+      setPhotos(result.results);
+      setIsShowResult(true);
+    }
+    )
+  }
+},[querySearch])
 
   return (
-    <div className="containerApp">
-      <header className="header">
-       <h1 className="headerTitle">Unsplash</h1>
-       <p className="headerSlogan">The internet's source of<a href="https://unsplash.com/license"> freely-usable images.</a><br/>Powered by creators everywhere.</p>
-       <InputSearch/>
-      <p className="headerTrending">Trending: flower, wallpapers, backgrounds, happy, love</p>
-      </header>
+    <div>
+         {
+           !isShowResult &&
+           <InputSearch value={querySearch} valueHandler={setQuerySearch}/>
+         }
+         {
+          isShowResult &&
+           <SecondPage  data={photos} dataHendler={setPhotos}/>   
+         }
+    
     </div>
   );
 }

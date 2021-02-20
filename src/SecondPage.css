@@ -1,0 +1,28 @@
+
+.cardTitleLink:active, .cardTitleLink:visited {
+color:black;
+}
+.download {
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+.containerSecondPage {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+ul {
+    list-style-type:none;
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+}
+li {
+    padding-right: 10px;
+}
+.image {
+    padding-top: 10px;
+    
+}
