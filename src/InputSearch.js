@@ -8,7 +8,7 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 const InputSearch = ({value, valueHandler}) => {
 
   
-  const top100Films = [
+  const autoComplete = [
     { title: 'cat'},
     { title: 'island'},
     { title: 'cats'},
@@ -25,7 +25,7 @@ const InputSearch = ({value, valueHandler}) => {
   const formStyle = {
     backgroundColor: "white", 
     fontSize: "20px",
-    borderRight:"none"
+    
   }
   const inputStyle = {
     borderLeft:"none",
@@ -55,32 +55,27 @@ return(
      <div className="containerApp">
        <h1 className="headerTitle">Unsplash</h1>
        <p className="headerSlogan">The internet's source of<a className="headerSloganLink" href="https://unsplash.com/license"> freely-usable images.</a><br/>Powered by creators everywhere.</p>
-       <div style={{ width: 300 }}>
+       <div style={{ width: 300, height: 100 }}>
       <Autocomplete
         freeSolo
-        
         disableClearable
-        options={top100Films.map((option) => option.title)}
+        options={autoComplete.map((option) => option.title)}
         renderInput={(params) => (
           <TextField
+          style={formStyle}
           onChange={onChange}
           onKeyDown={handleEnterKey}
           onClick={handleMouseClick}
             {...params}
-            label="Search input"
             margin="normal"
             variant="outlined"
             InputProps={{ ...params.InputProps, type: 'search' }}
+            placeholder="Search free high-resolution photos"
           />
         )}
       />
     </div>
-       {/* <InputGroup size="sm">
-       <InputGroupAddon addonType="prepend">
-      <InputGroupText style={formStyle}><img className="searchIcon" src={searchIcon} alt="loupe icon"></img></InputGroupText>
-    </InputGroupAddon>
-    <Input onChange={onChange} onKeyDown={handleEnterKey}  type="text" style={inputStyle} placeholder="Search free high-resolution photos"/>
-    </InputGroup> */}
+       
       <p className="headerTrending">Trending: flower, wallpapers, backgrounds, happy, love</p>
   </div>
   </div>
