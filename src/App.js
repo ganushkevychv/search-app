@@ -28,7 +28,7 @@ function App() {
          }
          {
           isShowResult &&
-           <SecondPage  data={photos} dataHendler={setPhotos}/>   
+           <SecondPage  value={querySearch}  data={photos} dataHendler={setPhotos}/>   
          }
     
     </div>

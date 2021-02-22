@@ -26,3 +26,12 @@ li {
     padding-top: 10px;
     
 }
+.inputSp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.input {
+    margin-top: 10px;
+}

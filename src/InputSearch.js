@@ -1,7 +1,5 @@
 import React, {useState} from 'react';
 import './App.css';
-import { InputGroup, InputGroupAddon, InputGroupText, Input } from 'reactstrap';
-import searchIcon from '../src/img/search.png';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 
@@ -10,16 +8,11 @@ const InputSearch = ({value, valueHandler}) => {
   
   const autoComplete = [
     { title: 'cat'},
-    { title: 'island'},
-    { title: 'cats'},
-    { title: 'sunrise'},
-    { title: 'sunset'},
     { title: "beach"},
-    { title: 'animals'},
-    { title: 'kids'},
-    { title: 'people'},
-    { title: 'office'},
-   
+    { title: "people"},
+    { title: "island"},
+    { title: "sunset"},
+    { title: "sunrise"},
   ]
 
   const formStyle = {
@@ -39,15 +32,14 @@ const handleEnterKey = (event) => {
     valueHandler(event.target.value)
   }
 }
-const handleMouseClick = (event) => {
-    valueHandler(event.target.value)
+
+const handleButtonSearch = (e) => {
+  valueHandler(inputValue)
 }
 
   const onChange = (e) => {
-    const {
-      value
-    }=e.target;
-setInputValue(value);
+    const {value}=e.target;
+    setInputValue(value);
   }
 
 return(
@@ -60,12 +52,12 @@ return(
         freeSolo
         disableClearable
         options={autoComplete.map((option) => option.title)}
+        onChange={(event, value) => setInputValue(value)}
         renderInput={(params) => (
           <TextField
           style={formStyle}
           onChange={onChange}
           onKeyDown={handleEnterKey}
-          onClick={handleMouseClick}
             {...params}
             margin="normal"
             variant="outlined"
@@ -74,6 +66,7 @@ return(
           />
         )}
       />
+      <button onClick={handleButtonSearch}>Search</button>
     </div>
        
       <p className="headerTrending">Trending: flower, wallpapers, backgrounds, happy, love</p>
